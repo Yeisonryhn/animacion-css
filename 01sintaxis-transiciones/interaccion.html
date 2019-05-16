@@ -6,44 +6,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Animaciones para la web</title>
     <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
         .canasta{
-            width: 300px;
-            height: 500px;
+            display: flex;
+            align-items: center;
+            width: 90vw;
+            height:200px;
             background-color: #7e7e7e;
             position:relative;
         }
         .pelota{
             width: 100px;
             height: 100px;
-            background-color:red;
+            /*background-color:red;*/
             border-radius: 50%;
-            transition-property:width,height;
-            transition-duration: 500ms;
+            /*transition-property:width,height;*/
+            transition-duration: 1000ms;
             /*transition-delay: 500ms;*/
-            transition-timing-function: ease;
+            /*transition-timing-function: ease;*/
             position: absolute;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
         .pelota.a{
-            top:0;
+            left:0;
+            background: blue;
+            /*transition-duration:1s;*/
         }
         .pelota.b{
-            bottom:0;
+            right:0;
+            background-color: rebeccapurple;
+            /*transition-duration:1s;*/
         }
-        .pelota:hover{
-            
-            /*margin:200px;*/
+        
+        .canasta:hover .pelota.a{
+            left:calc(50% - 100px);
         }
-        .canasta:hover .pelota{
-            width:200px;
-            height: 200px;
+        .canasta:hover .pelota.b{
+            right:calc(50% - 100px);
         }
 
     </style>
 </head>
 <body>
     <div class="canasta">
-        <div class="pelota a"></div>
-        <div class="pelota b"></div>
+        <div class="pelota a">Hola</div>
+        <div class="pelota b">Mundo</div>
     </div>
 
 </body>
