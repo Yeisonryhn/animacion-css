@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transform Punto de Origen</title>
+	<style>
+	/*LO PRIMERO QUE NECESITA UNA ANIMACION PARA FUNCIONAR ES UN NOMBRE DE ANIMACION
+		Para crear una animación CSS usaremos la propiedad animation y sus sub-propiedades, con las cuales podemos configurar el ritmo, la duración, etc.
+
+		Las subpropiedades de animation son:
+
+		animation-delay
+		Tiempo de retardo entre el momento en que el elemento se carga y el comienzo de la secuencia de la animación.
+
+		animation-direction
+		Indica si la animación debe retroceder hasta el fotograma de inicio al finalizar la secuencia o si debe comenzar desde el principio al llegar al final.
+
+		animation-duration
+		Indica la cantidad de tiempo que la animación consume en completar su ciclo (duración).
+
+		animation-iteration-count
+		El número de veces que se repite. Podemos indicar infinite para repetir la animación indefinidamente.
+
+		animation-name
+		Especifica el nombre de la regla @keyframes que describe los fotogramas de la animación.
+
+		animation-play-state
+		Permite pausar y reanudar la secuencia de la animación.
+
+		animation-timing-function
+		Indica el ritmo de la animación, es decir, como se muestran los fotogramas de la animación, estableciendo curvas de aceleración.
+
+		animation-fill-mode
+		Especifica qué valores tendrán las propiedades después de finalizar la animación (los de antes de ejecutarla, los del último fotograma de la animación o ambos).
+	*/
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			height: 100vh;
+			color: white;
+			font-family: Arial;			
+		}
+
+		.container{
+			width: 100%;
+			background-color: gray;
+			display: flex;
+			flex-shrink: 0;
+			/*align-items: center;
+			justify-content: center;*/
+			margin: 20px;
+		}		
+		.cuadrado{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100px;
+			height: 100px;
+			border: 2px solid red;
+			border-radius: 50%;
+
+			/*transition: .5s;*/
+			background-color: #7dc900;
+			margin: 20px;
+			animation-name: cuadrado;/* PASO 1 Primero el nombre*/
+			animation-duration: 3s;/*PASO 2 Duracion de la animacion*/
+			animation-delay: 1s;/*opcional*/
+			/*animation-iteration-count: 2; /*Cuantas veces se va a repetir la animacion*/
+			animation-iteration-count: infinite;/*En caso de querer que la animacion sea infinita*/
+			/*Como funciona el suavizado de la animacion, por defecto está en ease y puede tener los siguientes valores*/
+			/*animation-timing-function: linear ;
+			animation-timing-function: ease;
+			animation-timing-function: ease-in;
+			animation-timing-function: ease-out;
+			animation-timing-function: ease-in-out;*/
+			animation-timing-function: ease ;
+			/*Tambien se puede decir que el animation timing function sea una curva de bezier, entonces la animacion cambia de velocidades de acuerdo a los valores que uno le de, en la siguiente clase explicado con mas detalle*/
+			animation-direction: reverse;/*con esto se puede configurar la animacion en reversa, es decir, empieza en 100% y avanza hasta cero*/
+			animation-direction: alternate;/*hace que la animacion vaya del o al 100% y luego aplique reversa, alterna de 0 a 100 y luego de 100 a cero y asi sucesivamente*/
+			animation-fill-mode: forwards;/*Cambia el modo de relleno de la animacion, o sea, como es que se quiere que se vea el elemento cuando acabe la animacion para este caso le dice que la animacion se quede con como termina la animacion, el ultimo estado*/
+			
+			/*animation-play-state: paused;/*Por defecto viene en running*/
+			position: relative;
+		}
+		.container:hover .cuadrado{
+			animation-play-state: paused;
+		}
+
+		@keyframes cuadrado{
+			/*Se pueden confiurar varias cosas que van a hacer en esos 2 segundos de la animacion cuadrado, y se puede dividir en distintas acciones, para ello se pueden usar los porcentajes*/
+			0%{
+				left: 0;
+			}
+			100%{				
+				left: calc(100% - 100px - 40px);/*menos el ancho del elemento menos los margenes de derecha y tambien los de izquierda*/
+			}			
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="cuadrado a">Cuadrado a</div>
+	</div>
+	<div class="container">
+		<div class="cuadrado b">Cuadrado b</div>
+	</div>
+	<div class="container">
+		<div class="cuadrado c">Cuadrado c</div>
+	</div>
+</body>
+</html>

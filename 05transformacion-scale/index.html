@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transform Rotate</title>
+	<style>
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			height: 100vh;
+			color: white;
+			font-family: Arial;
+			perspective: 200px;/*PERSPECTIVA, QUE TAN ANCHA VA A SER*/
+			perspective-origin:center;/*CUAL ES EL PUNTO DE INICIO DE LA PERSPECTIVA, POR DEFECTO COMIENZA EN EL CENTRO, SE LE PUEDE CONFIGURAR EN EL EJE X Y EN EL EJE X*/
+			/*perspective-origin:center; puede tomar valores como right, left, top o botttom tambien se pueden combinar tanto x como y, top rigth*/
+		}
+
+		.container{
+			/*width: 1000px;*/
+			/*height: 200px;*/
+			background-color: gray;
+			display: flex;
+			flex-shrink: 0;
+			align-items: center;
+			justify-content: center;
+			margin: 20px;
+		}
+		.container:hover .cuadrado.a{
+			transform: scaleX(1.5);
+		}		
+		.container:hover .cuadrado.b{
+			transform: scaleY(1.5);
+		}
+		.container:hover .cuadrado.c{
+			transform: scale(1.5 ,1.5);
+		}
+		.container:hover .cuadrado.d{
+			transform: scaleZ(1.5);
+		}
+		
+		.container:hover .cuadrado.f{
+			transform: scale3d(1.5, 1.5, 1.5);
+		}
+		
+
+		.cuadrado{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100px;
+			height: 100px;
+			border: 2px solid red;
+			transition: .5s;
+			background-color: #7dc900;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="cuadrado a">Cuadrado a</div>
+	</div>
+	<div class="container">
+		<div class="cuadrado b">Cuadrado b</div>
+	</div>
+	<div class="container">
+		<div class="cuadrado c">Cuadrado c</div>
+	</div>
+	<div class="container">
+		<div class="cuadrado d">Cuadrado d</div>
+	</div>	
+	<div class="container">
+		<div class="cuadrado f">Cuadrado f</div>
+	</div>
+</body>
+</html>

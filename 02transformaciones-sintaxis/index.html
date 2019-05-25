@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animaciones para la web</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .canasta{
+            display: flex;
+            align-items: center;
+            width: 90vw;
+            height:200px;
+            background-color: #7e7e7e;
+            position:relative;
+            /*transform: rotate(5deg) skew(10deg) translate(100px) scale(1.5);*/
+            transform:  rotate(5deg) skew(5deg) translate(50px ,50px) scale(1.5);
+
+        }
+        .pelota{
+            width: 100px;
+            height: 100px;
+            /*background-color:red;*/
+            border-radius: 50%;
+            /*transition-property:width,height;*/
+            transition-duration: 1000ms;
+            /*transition-delay: 500ms;*/
+            /*transition-timing-function: ease;*/
+            position: absolute;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            
+            
+            
+            
+            
+        }
+        .pelota.a{
+            left:0;
+            background: blue;
+            /*transition-duration:1s;*/
+        }
+        .pelota.b{
+            right:0;
+            background-color: rebeccapurple;
+            /*transition-duration:1s;*/
+        }
+        
+        .canasta:hover .pelota.a{
+            left:calc(50% - 100px);
+        }
+        .canasta:hover .pelota.b{
+            right:calc(50% - 100px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="canasta">
+        <div class="pelota a">Hola</div>
+        <div class="pelota b">Mundo</div>
+    </div>
+
+</body>
+</html>
