@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript element.animate</title>
+	<style>
+		body{
+			display: flex;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;			
+		}
+		.container{
+			width: 600px;
+			border:  1px solid red;
+		}
+		.pelota{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			border-radius: 50%;
+		}
+		.buttons{
+			display: flex;
+		}
+		.btn{
+			text-align: center;
+			background-color: #7dc800;
+			padding: .6em .8em .8em;
+			border: none;
+			color: white;
+			margin: 5px;
+			border-radius: 5px;
+			cursor: pointer;
+			box-shadow: inset 0 -.2em rgba(0,0,0,.2);
+			transition: .2s;
+			will-change: transform;
+			animation-fill
+		}
+		.btn:active{
+			transform: scale(.9);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="pelota" id="pelota"></div>
+		<div class="buttons">
+			<div id="play" class="btn">Play</div>
+			<div id="pause" class="btn">Pause</div>
+			<div id="stop" class="btn">Stop</div>
+			<div id="reverse" class="btn">Reverse</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		const pelota = document.getElementById('pelota');
+		/*element.animate(keyframes = [], option = {});*/
+		const animation = pelota.animate([
+			//Creo que esta es una notacion de objetos de Javascript
+			//from
+			{
+				transform:'translateX(0)'
+			},{//to
+				transform: 'translateX(500px)'
+			}
+		],{
+			fill:'forwards',//que en el mometo final quede con los estilos finales
+			direction: 'alternate',
+			delay:1000,
+			duration:1000,
+			easing:'linear',
+			iterations: Infinity,/*Este es el infinite de Javascript*/
+			iterationStart: .5,
+			//options 
+			//duration 
+			//delay
+			//direction
+			//easing 
+			//iterations 
+			//fill  NOTA: Es Como quiero que los estilos se apliquen a mi elemento despues de que la animacion se termine
+			//iterationStart NOTA: En que estado de la aplicacion quiero que empiece mi animacion Recibe valores entre cero y uno
+			//endDelay tiempo en milisegundoss que queremos que el elemento espere luegode que se acaba la animacion
+
+		});
+		const playButton =document.getElementById('play');
+		const pauseButton =document.getElementById('pause');
+		const stopButton =document.getElementById('stop');
+		const reverseButton =document.getElementById('reverse');
+		
+		playButton.addEventListener('click', () => {
+			if( animation.playState == 'running' ){
+				animation.pause();
+			}else{
+				animation.play();
+			}
+		});
+		pauseButton.addEventListener('click', () => {
+			animation.pause();			
+		});
+		stopButton.addEventListener('click', () => {
+			animation.cancel();
+		});
+		reverseButton.addEventListener('click', () => {
+			animation.reverse();
+		});
+		
+		console.log(pelota);
+	</script>
+</body>
+</html>
